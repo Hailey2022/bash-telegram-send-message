@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# prepare any message you want
+login_ip="$(echo $SSH_CONNECTION | cut -d " " -f 1)"
+login_date="$(date +"%F %A %r")"
+login_name="$(whoami)"
+
+# For new line I use $'\n' here
+message="new login to server from $login_ip"$'\n'"username: $login_name"$'\n'"time: $login_date"
+
+#send it
+bash send.sh "$message"
